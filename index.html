@@ -75,8 +75,8 @@
         actionsCell.innerHTML = "<button onclick='deleteTask(this)'>Done</button>";
     }
     function deleteTask(button) {
-        var row = button.parentNode.parentNode; // Get the parent row of the button
-        row.parentNode.removeChild(row); // Remove the row from the table
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
     }
 </script>
 
