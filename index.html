@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>To Do</title>
+    <!-- <link rel="stylesheet" href="style2.css"> -->
+    <style>
+        *{
+            /* font-family: Arial, sans-serif; */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 24px;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 3px;
+            transition: 0.4s;
+        }
+        td,th {
+            border: 1px solid black;
+        }
+        th{
+            background-color: #4c4ed8;
+            color: white;
+            font-weight: 100;
+        }
+        body{
+            background: linear-gradient(135deg, #5fffc7, #a7fe7b);
+        }
+        button{
+            background-color: #4c4ed8;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:active{
+            transform: scale(95%);
+        }
+        input{
+            background-color: #ffffff90;
+            border: none;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <table class="main-table">
+        <tr class="">
+            <td class="form-column">
+                <input type="text" id="task" placeholder="Enter task"><br>
+                <input type="textarea" id="description" placeholder="Enter description"><br>
+                <button onclick="addTask()">Add Task</button>
+            </td>
+            <td class="task-column">
+                <table class="task-table">
+                    <tr>
+                        <th>Task</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    function addTask() {
+        var task = document.getElementById("task").value;
+        var description = document.getElementById("description").value;
+        var table = document.querySelector(".task-table");
+        var row = table.insertRow(-1);
+        var taskCell = row.insertCell(0);
+        var descriptionCell = row.insertCell(1);
+        var actionsCell = row.insertCell(2);
+        taskCell.innerHTML = task;
+        descriptionCell.innerHTML = description;
+        actionsCell.innerHTML = "<button onclick='deleteTask(this)'>Done</button>";
+    }
+    function deleteTask(button) {
+        var row = button.parentNode.parentNode; // Get the parent row of the button
+        row.parentNode.removeChild(row); // Remove the row from the table
+    }
+</script>
+
+</html>
